@@ -1,0 +1,47 @@
+.TH OsmJniPi 8 "June 23, 2015" "libOsmJniPi" "OpenSM Java Native Interface Plugin"
+
+.SH NAME
+libOsmJniPi \- the native library for the OpenSM Monitoring Service
+
+.SH DESCRIPTION
+.PP
+
+The \fBlibOsmJniPi.so\fR file is a static library which can be dynamically
+loaded by opensm at run time.  It is an "event plugin" that provides the
+interface between OpenSM and the OpenSM Monitoring Service (See
+.BR OMS (7)
+for further details).  The opensm configuration file (see below)
+determines which event plugins will be loaded during the initialization
+phase of opensm.  If a name is specified in the opensm.conf file, the
+corresponding library will be located, and loaded if possible.  Once
+loaded, the plugin's initializaiton procedure will be invoked.  Plugin
+options from the opensm.conf file can also be provided, but libOsmJniPi
+will ignore them, and use its dedicated configuration file (see below)
+instead.
+
+.SH FILES
+.I /usr/lib64/libOsmJniPi.so
+.RS
+The static library that can be dynamically loaded.  It provides the opensm event
+plugin implementation for the OpenSM Monitoring System (OMS).  This is the
+default location, so it can be discovered by OpenSM, and loaded and started
+during the inititalization phase of OpenSM.
+.RE
+.I /etc/opensm/opensm.conf
+.RS
+The OpenSM configuration file.  It should have the performance manager enabled, and
+the \fBevent_plugin_name\fR set to \fBOsmJniPi\fR.
+.RE
+.I /etc/opensm-plugin/libOsmJniPi.conf
+.RS
+The OMS event plugin configuration file.  It contains information about how
+monitoring should be performed, as well as instructions for invoking the JVM
+and starting the service.
+.RE
+
+.SH AUTHOR
+.TP
+Timothy A. Meier < meier3@llnl.gov >
+.SH "SEE ALSO"
+.BR OMS (7),
+.BR osmConsole (8)

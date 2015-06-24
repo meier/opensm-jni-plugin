@@ -1,0 +1,37 @@
+##*****************************************************************************
+## $Id: ac_meta.m4,v 1.1.1.1 2004/07/02 22:31:29 achu Exp $
+##*****************************************************************************
+#  AUTHOR:
+#    Chris Dunlap <cdunlap@llnl.gov>
+#    Tim Meier <meier3@llnl.gov>
+#    Ira Weiny <weiny2@llnl.gov>
+#
+#  SYNOPSIS:
+#    AC_META
+#
+#  DESCRIPTION:
+#    Set PROJECT and VERSION from the META file.  The RELEASE is a combination
+#    of the projects' release in the META file, and the installed opensm version
+#    seperated by an underscore.  The opensm version is obtained via the
+#    osm_version.h header which is installed by OpenSM
+#
+##*****************************************************************************
+
+AC_DEFUN([AC_META],
+[
+  AC_MSG_CHECKING([metadata])
+
+  PROJECT="`perl -ne 'print,exit if s/^\s*NAME:\s*(\S*).*/\1/i' $srcdir/META`"
+  AC_DEFINE_UNQUOTED([PROJECT], ["$PROJECT"], [Define the project name.])
+  AC_SUBST([PROJECT])
+
+  VERSION="`perl -ne 'print,exit if s/^\s*VERSION:\s*(\S*).*/\1/i' $srcdir/META`"
+  AC_DEFINE_UNQUOTED([VERSION], ["$VERSION"], [Define the project version.])
+  AC_SUBST([VERSION])
+
+  RELEASE="`perl -ne 'print,exit if s/^\s*RELEASE:\s*(\S*).*/\1/i' $srcdir/META`"
+  AC_DEFINE_UNQUOTED([RELEASE], ["$RELEASE"], [Define the release.])
+  AC_SUBST([RELEASE])
+
+  AC_MSG_RESULT([yes])
+])

@@ -1,0 +1,17 @@
+/*
+ * osmJniPi_version.h
+ *
+ * Machine generated version and release.  Refer to the META file, as well as
+ * the ac_meta.m4 macro in the config subdirectory.
+ *
+ *  Created on: Oct 30, 2014
+ *      Author: meier3
+ */
+
+#ifndef OSM_JNI_PI_VERSION_H_
+#define OSM_JNI_PI_VERSION_H_
+
+#define OSM_JNI_PI_VERSION "OSM_JNI_Plugin @VERSION@-@RELEASE@"
+
+
+#endif /* OSM_JNI_PI_VERSION_H_ */

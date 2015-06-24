@@ -1,0 +1,46 @@
+.TH OMS 7 "June 23, 2015" "libOsmJniPi" "OpenSM Monitoring Service"
+
+.SH NAME
+OMS \- an infiniband monitoring service, which uses opensm
+
+.SH SYNOPSIS
+.B /usr/share/java/OsmClientServer/bin/showServerStatus.sh
+
+.SH DESCRIPTION
+.PP
+The OpenSM Monitoring Service (OMS) is a Java daemon which obtains
+fabric information from OpenSM and supplies it to clients through the
+service it provides.  The following commands can be used locally, to
+determine the state and functionality of the service.  For detailed
+information about OMS, refer to the website.
+.PP
+.B showServerStatus.sh
+Provides software version information, and tests the service by returning
+uptime as well as the most recent timestamp for the fabric data.
+.PP
+.B osmConsole.sh
+Provides a curses based console interface for examining fabric data organized
+on various screens or pages.  See
+.BR osmConsole (8)
+for further details.
+This is a good tool to use to make sure the service is up and running.
+
+.SH FILES
+.I /etc/opensm/opensm.conf
+.RS
+The OpenSM configuration file.  It should have the performance manager enabled, and
+the \fBevent_plugin_name\fR set to \fBOsmJniPi\fR.
+.RE
+.I /etc/opensm-plugin/libOsmJniPi.conf
+.RS
+The OMS event plugin configuration file.  It contains information about how
+monitoring should be performed, as well as instructions for invoking the JVM
+and starting the service.
+.RE
+
+.SH AUTHOR
+.TP
+Timothy A. Meier < meier3@llnl.gov >
+.SH "SEE ALSO"
+.BR OsmJniPi (8),
+.BR osmConsole (8)

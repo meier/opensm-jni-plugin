@@ -1,0 +1,31 @@
+- Tue Jun 23 2015 Tim Meier <meier3@llnl.gov>
+
+	* : updated header files to include copyright info
+
+- Wed Feb 04 2015 Tim Meier <meier3@llnl.gov>
+
+	* : version 2.0, updated API to support routing and other new features
+
+- Thu Oct 09 2014 Tim Meier <meier3@llnl.gov>
+
+	* : modified the build system, changed to configure.ac, no code changes
+
+- Wed Jun 25 2012 Tim Meier <meier3@llnl.gov>
+
+	* : simple version change to remain in synch with version 3.3.12-3 of opensm
+
+- Wed Jan 11 2012 Tim Meier <meier3@llnl.gov>
+
+	* : collect all the ports from the subnets node table, instead of the incomplete
+	    list within the port table.  This therefore consolidates getting all the nodes
+	    and getting all the ports into the same routine.  No changes to the native api,
+	    only complete port data.
+
+- Wed Oct 26 2011 Tim Meier <meier3@llnl.gov>
+
+	* : small installation, configuration and deployment changes.  No functional changes.
+
+- Wed May 11 2011 Tim Meier <meier3@llnl.gov>
+
+	* : initial creation
+

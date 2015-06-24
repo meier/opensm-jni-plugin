@@ -1,0 +1,73 @@
+Installation Instructions
+*************************
+
+A typical build scenario would be;
+
+./autogen.sh
+./configure --prefix=/usr
+make
+
+if this fails, it would usually be due to not being able to find an Infiniband header file, or perhaps Java files.
+Aliases to these unresolved links or includes can be created, or the build rules can be corrected.
+
+Assuming everything "make"s, then you only need to install as root;
+
+make install
+
+it will output some important information, which is basically where everything is placed.  An example output;
+
+	
+	[root@siegfried OsmJpiInterface]# make install
+	make[1]: Entering directory `/nfs/g0/meier3/ErisGit/OsmJpiInterface'
+	test -z "/usr/lib" || mkdir -p -- "/usr/lib"
+	 /bin/sh ./libtool --mode=install /usr/bin/install -c  'src/libOsmJniPi.la' '/usr/lib/libOsmJniPi.la'
+	/usr/bin/install -c src/.libs/libOsmJniPi.so.1.0.1 /usr/lib/libOsmJniPi.so.1.0.1
+	(cd /usr/lib && { ln -s -f libOsmJniPi.so.1.0.1 libOsmJniPi.so.1 || { rm -f libOsmJniPi.so.1 && ln -s libOsmJniPi.so.1.0.1 libOsmJniPi.so.1; }; })
+	(cd /usr/lib && { ln -s -f libOsmJniPi.so.1.0.1 libOsmJniPi.so || { rm -f libOsmJniPi.so && ln -s libOsmJniPi.so.1.0.1 libOsmJniPi.so; }; })
+	/usr/bin/install -c src/.libs/libOsmJniPi.lai /usr/lib/libOsmJniPi.la
+	/usr/bin/install -c src/.libs/libOsmJniPi.a /usr/lib/libOsmJniPi.a
+	chmod 644 /usr/lib/libOsmJniPi.a
+	ranlib /usr/lib/libOsmJniPi.a
+	PATH="$PATH:/sbin" ldconfig -n /usr/lib
+	----------------------------------------------------------------------
+	Libraries have been installed in:
+	   /usr/lib
+	
+	If you ever happen to want to link against installed libraries
+	in a given directory, LIBDIR, you must either use libtool, and
+	specify the full pathname of the library, or use the `-LLIBDIR'
+	flag during linking and do at least one of the following:
+	   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+	     during execution
+	   - add LIBDIR to the `LD_RUN_PATH' environment variable
+	     during linking
+	   - use the `-Wl,--rpath -Wl,LIBDIR' linker flag
+	   - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+	
+	See any operating system documentation about shared libraries for
+	more information, such as the ld(1) and ld.so(8) manual pages.
+	----------------------------------------------------------------------
+	test -z "/usr/sbin" || mkdir -p -- "/usr/sbin"
+	test -z "/usr/etc" || mkdir -p -- "/usr/etc"
+	 /usr/bin/install -c -m 644 'etc/libOsmJniPi.conf' '/usr/etc/libOsmJniPi.conf'
+	test -z "/usr/man/man8" || mkdir -p -- "/usr/man/man8"
+	 /usr/bin/install -c -m 644 './man/OsmJniPi.8' '/usr/man/man8/OsmJniPi.8'
+	make  install-data-hook
+	make[2]: Entering directory `/nfs/g0/meier3/ErisGit/OsmJpiInterface'
+	chmod 640 /usr/etc/libOsmJniPi.conf
+	make[2]: Leaving directory `/nfs/g0/meier3/ErisGit/OsmJpiInterface'
+	make[1]: Leaving directory `/nfs/g0/meier3/ErisGit/OsmJpiInterface'
+
+Since this is installed in '/usr/lib' and the target host is almost always going to be a 64 bit system,
+an alias may need to be created in /usr/lib64 that points to this library, so that opensm can find it.
+As root;
+
+cd /usr/lib64
+ln -s /usr/lib/libOsmJniPi.so libOsmJniPi.so
+
+As shown above, the configuration file is placed in "/usr/etc".  This file contains many settings
+that are necessary for a successful installation.  Specifically, the location of JVM library must
+be specified (location of libjvm.so), as well as the Java Options string which (amoung other things)
+needs to provide the path to the JAR file.
+
+The name and location of the LOG file is also specified in the configuration file.

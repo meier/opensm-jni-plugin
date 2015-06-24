@@ -1,0 +1,53 @@
+.TH osmConsole 7 "June 23, 2015" "libOsmJniPi" "OpenSM Monitoring Service"
+
+.SH NAME
+osmConsole \- a tool for viewing fabric information
+
+.SH SYNOPSIS
+.B /usr/share/java/OsmClientServer/bin/osmConsole.sh [options]
+
+.SH DESCRIPTION
+.PP
+The OsmConsole is a client to the OpenSM Monitoring Service (OMS), and was
+designed as a test and development tool for the Service.  It is a java
+program that uses the ncurses package for its user interface.  Its main
+purpose is to exercise all the different application interfaces supported
+by OMS, and expose as much infiniband data as possible.
+
+.SH OPTIONS
+
+.PP
+.TP
+\fB\-?\fR
+Display help
+.TP
+\fB\-h <host url>\fR
+the host name of the OSM Monitoring Service (localhost by default)
+.TP
+\fB\-p <port #>\fR
+the port number of the service (10011 by default)
+.TP
+\fB\-r <# secs>\fR
+the console refresh period in seconds (30 by default)
+
+.SH FILES
+.I /etc/opensm-plugin/OsmJServer.properties
+.RS
+The OMS Server configuration file.  Although the osmConsole is a client, it
+should be configured in a manner compatible with the OMS Service it will
+connect to.  Often, the osmConsole is only used locally, and the Client and
+Server will automatically be compatible.
+.RE
+.I /etc/opensm-plugin/OsmJClient.properties
+.RS
+The OMS Client configuration file.  It contains information about how the
+client should communicate with the server, as well as other local behavior
+such as logging.
+.RE
+
+.SH AUTHOR
+.TP
+Timothy A. Meier < meier3@llnl.gov >
+.SH "SEE ALSO"
+.BR OsmJniPi (8),
+.BR OMS (7)

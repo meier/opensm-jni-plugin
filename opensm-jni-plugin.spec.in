@@ -1,0 +1,55 @@
+%define osmrel _%(perl -ne 'print if s/^#define OSM_VERSION \"(.*)\"/\\1/i' %_includedir/infiniband/opensm/osm_version.h | sed -e 's/-/_/g' | sed -e 's/ /_/g')
+%{echo: "          *** Found OSM version:"}
+%{echo: %{osmrel}}
+%{echo: "          ***"}
+Name: @PROJECT@
+Version: @VERSION@
+Release: @RELEASE@%{osmrel}%{?dist}
+
+%{echo: "          *** Using release:"}
+%{echo: %{release}}
+%{echo: "          ***"}
+
+Summary: OpenSM Java Native Interface Plugin
+License: GPL/BSD
+Group: System Environment/Libraries
+BuildRoot: %{_tmppath}/@PROJECT@-@VERSION@-@RELEASE@
+Source: @PROJECT@-@VERSION@.tar.gz
+Requires: opensm opensm-devel java-1.6.0-sun libgcj libgcj-devel
+BuildRequires: opensm opensm-devel libgcj libgcj-devel
+
+%description
+opensm-jni-plugin-libs is the dynamically loadable OpenSM Plugin that provides a native
+interface to the java language.  It invokes a JVM and a java program specified in the 
+@OPENSM_PI_CONFIG_DIR@/libOsmJniPi.conf file.  By default, the java program that gets
+invoked provides a monitoring service.
+
+%prep
+%setup -q
+
+%build
+%configure
+make
+
+%install
+make DESTDIR=${RPM_BUILD_ROOT} install
+
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+%{_libdir}/libOsmJniPi*.so.*
+%{_libdir}/libOsmJniPi*.so
+# don't include .la and .a files in the package
+%exclude %{_libdir}/libOsmJniPi*.*a
+%doc ChangeLog
+%doc INSTALL
+%doc LICENSE
+%doc README.md
+%{_mandir}/man7/*
+%{_mandir}/man8/*
+%defattr(640,root,root)
+%config(noreplace) %{_sysconfdir}/opensm-plugin/libOsmJniPi.conf
+
