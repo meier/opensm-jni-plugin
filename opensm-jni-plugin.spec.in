@@ -5,6 +5,8 @@
 Name: @PROJECT@
 Version: @VERSION@
 Release: @RELEASE@%{osmrel}%{?dist}
+Provides: libOsmJniPi
+
 
 %{echo: "          *** Using release:"}
 %{echo: %{release}}
