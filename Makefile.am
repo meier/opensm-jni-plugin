@@ -1,4 +1,6 @@
-INCLUDES = -I$(includedir)/infiniband
+JAVAHOME=/usr/lib/jvm/java
+
+INCLUDES = -I$(includedir)/infiniband -I$(JAVAHOME)/include -I$(JAVAHOME)/include/linux $(GLIB_CFLAGS)
 
 lib_LTLIBRARIES = src/libOsmJniPi.la
 
