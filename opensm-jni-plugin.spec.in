@@ -17,7 +17,7 @@ License: GPL/BSD
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/@PROJECT@-@VERSION@-@RELEASE@
 Source: @PROJECT@-@VERSION@.tar.gz
-Requires: opensm opensm-devel java-1.6.0-sun java-devel
+Requires: opensm opensm-devel java java-devel
 BuildRequires: opensm opensm-devel java-devel
 #Requires: opensm opensm-devel java-1.6.0-sun libgcj libgcj-devel
 #BuildRequires: opensm opensm-devel libgcj libgcj-devel
