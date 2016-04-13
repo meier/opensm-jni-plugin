@@ -2,6 +2,7 @@
 %{echo: "          *** Found OSM version:"}
 %{echo: %{osmrel}}
 %{echo: "          ***"}
+%define osmverel OpenSmVersionRelease
 Name: @PROJECT@
 Version: @VERSION@
 Release: @RELEASE@%{osmrel}%{?dist}
@@ -27,6 +28,8 @@ opensm-jni-plugin-libs is the dynamically loadable OpenSM Plugin that provides a
 interface to the java language.  It invokes a JVM and a java program specified in the 
 @OPENSM_PI_CONFIG_DIR@/libOsmJniPi.conf file.  By default, the java program that gets
 invoked provides a monitoring service.
+This library is tightly coupled to a single version of OpenSM, specifically;
+  OpenSmVersionRelease
 
 %prep
 %setup -q
