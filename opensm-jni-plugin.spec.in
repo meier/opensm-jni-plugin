@@ -1,17 +1,8 @@
-%define osmrel _%(perl -ne 'print if s/^#define OSM_VERSION \"(.*)\"/\\1/i' %_includedir/infiniband/opensm/osm_version.h | sed -e 's/-/_/g' | sed -e 's/ /_/g')
-%{echo: "          *** Found OSM version:"}
-%{echo: %{osmrel}}
-%{echo: "          ***"}
-%define osmverel OpenSmVersionRelease
+%define osmrel OpenSmVersionRelease
 Name: @PROJECT@
 Version: @VERSION@
 Release: @RELEASE@%{osmrel}%{?dist}
 Provides: libOsmJniPi
-
-
-%{echo: "          *** Using release:"}
-%{echo: %{release}}
-%{echo: "          ***"}
 
 Summary: OpenSM Java Native Interface Plugin
 License: GPL/BSD
@@ -29,7 +20,7 @@ interface to the java language.  It invokes a JVM and a java program specified i
 @OPENSM_PI_CONFIG_DIR@/libOsmJniPi.conf file.  By default, the java program that gets
 invoked provides a monitoring service.
 This library is tightly coupled to a single version of OpenSM, specifically;
-  OpenSmVersionRelease
+  %{osmrel}
 
 %prep
 %setup -q
