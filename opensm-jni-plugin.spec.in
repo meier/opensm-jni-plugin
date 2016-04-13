@@ -1,7 +1,7 @@
 %define osmrel OpenSmVersionRelease
 Name: @PROJECT@
 Version: @VERSION@
-Release: @RELEASE@%{osmrel}%{?dist}
+Release: @RELEASE@_%{osmrel}%{?dist}
 Provides: libOsmJniPi
 
 Summary: OpenSM Java Native Interface Plugin
