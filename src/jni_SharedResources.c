@@ -2058,6 +2058,12 @@ jsr_invokeCommand(int cmdType, const char* cmdArgs)
   return ResultString;
 }
 
+/*
+ * This method gets periodically called to safely copy everything
+ * from opensm, into a shared memory region, which will be used
+ * by the JNI layer for the service
+ *
+ */
 int
 jsr_UpdateSharedResources(int update_period, int report_period)
 {
