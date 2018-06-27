@@ -73,7 +73,7 @@ extern "C" {
 #define MIN_UPDATE_PERIOD        5
 #define MIN_REPORT_PERIOD        300
 
-#define MAX_SYSTEM_PROPERTIES    5
+#define MAX_SYSTEM_PROPERTIES    7
 
 
   /** =========================================================================
