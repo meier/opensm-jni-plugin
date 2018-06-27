@@ -1,3 +1,7 @@
+- Wed Jun 27 2018 Tim Meier <meier3@llnl.gov>
+
+	* : release 51, support additional system properties for OMS
+	
 - Tue Nov 08 2016 Tim Meier <meier3@llnl.gov>
 
 	* : release 47, minor build modifications
