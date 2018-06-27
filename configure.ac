@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(opensm-jni-plugin-libs, 2.0.1, meier3@llnl.gov)
+AC_INIT(opensm-jni-plugin-libs, 2.0.2, meier3@llnl.gov)
 AC_META
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_SRCDIR([META])
@@ -48,7 +48,7 @@ AC_CHECK_LIB(pthread, pthread_mutex_init, [],
 	AC_MSG_ERROR([pthread_mutex_init() not found.  libOsmJniPi requires libpthread.]))
 
 dnl the library version
-libOsmJniPi_api_version=2:0:1
+libOsmJniPi_api_version=2:0:2
 AC_SUBST(libOsmJniPi_api_version)
 
 dnl We use --version-script with ld if possible
