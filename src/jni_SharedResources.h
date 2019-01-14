@@ -197,6 +197,157 @@ typedef struct pm_port
   time_t wait_ts;
 } pm_Port_t;
 
+
+/* the new 12-18-2018 struct
+ */
+
+//typedef struct osm_subn_opt {
+//	const char *config_file;
+//	ib_net64_t guid;
+//	ib_net64_t m_key;
+//	ib_net64_t sm_key;
+//	ib_net64_t sa_key;
+//	ib_net64_t subnet_prefix;
+//	ib_net16_t m_key_lease_period;
+//	uint8_t m_key_protect_bits;
+//	boolean_t m_key_lookup;
+//	uint32_t sweep_interval;
+//	uint32_t max_wire_smps;
+//	uint32_t max_wire_smps2;
+//	uint32_t max_smps_timeout;
+//	uint32_t transaction_timeout;
+//	uint32_t transaction_retries;
+//	uint32_t long_transaction_timeout;
+//	uint8_t sm_priority;
+//	uint8_t lmc;
+//	boolean_t lmc_esp0;
+//	uint8_t max_op_vls;
+//	uint8_t force_link_speed;
+//	uint8_t force_link_speed_ext;
+//	uint8_t force_link_width;
+//	uint8_t fdr10;
+//	boolean_t reassign_lids;
+//	boolean_t ignore_other_sm;
+//	boolean_t single_thread;
+//	boolean_t disable_multicast;
+//	boolean_t force_log_flush;
+//	uint8_t subnet_timeout;
+//	uint8_t packet_life_time;
+//	uint8_t vl_stall_count;
+//	uint8_t leaf_vl_stall_count;
+//	uint8_t head_of_queue_lifetime;
+//	uint8_t leaf_head_of_queue_lifetime;
+//	uint8_t local_phy_errors_threshold;
+//	uint8_t overrun_errors_threshold;
+//	boolean_t use_mfttop;
+//	uint32_t sminfo_polling_timeout;
+//	uint32_t polling_retry_number;
+//	uint32_t max_msg_fifo_timeout;
+//	boolean_t force_heavy_sweep;
+//	uint8_t log_flags;
+//	char *dump_files_dir;
+//	char *log_file;
+//	uint32_t log_max_size;
+//	char *partition_config_file;
+//	boolean_t no_partition_enforcement;
+//	char *part_enforce;
+//	osm_partition_enforce_type_enum part_enforce_enum;
+//	boolean_t allow_both_pkeys;
+//	boolean_t keep_pkey_indexes;
+//	uint8_t sm_assigned_guid;
+//	boolean_t qos;
+//	char *qos_policy_file;
+//	boolean_t suppress_sl2vl_mad_status_errors;
+//	boolean_t accum_log_file;
+//	char *console;
+//	uint16_t console_port;
+//	char *port_prof_ignore_file;
+//	char *hop_weights_file;
+//	char *port_search_ordering_file;
+//	boolean_t port_profile_switch_nodes;
+//	boolean_t sweep_on_trap;
+//	char *routing_engine_names;
+//	boolean_t avoid_throttled_links;
+//	boolean_t use_ucast_cache;
+//	boolean_t connect_roots;
+//	char *lid_matrix_dump_file;
+//	char *lfts_file;
+//	char *root_guid_file;
+//	char *cn_guid_file;
+//	char *io_guid_file;
+//	boolean_t port_shifting;
+//	uint32_t scatter_ports;
+//	uint16_t max_reverse_hops;
+//	char *ids_guid_file;
+//	char *guid_routing_order_file;
+//	boolean_t guid_routing_order_no_scatter;
+//	char *sa_db_file;
+//	boolean_t sa_db_dump;
+//	char *torus_conf_file;
+//	boolean_t do_mesh_analysis;
+//	boolean_t exit_on_fatal;
+//	boolean_t honor_guid2lid_file;
+//	boolean_t daemon;
+//	boolean_t sm_inactive;
+//	boolean_t babbling_port_policy;
+//	boolean_t drop_event_subscriptions;
+//	boolean_t ipoib_mcgroup_creation_validation;
+//	boolean_t mcgroup_join_validation;
+//	boolean_t use_original_extended_sa_rates_only;
+//	boolean_t use_optimized_slvl;
+//	boolean_t fsync_high_avail_files;
+//	osm_qos_options_t qos_options;
+//	osm_qos_options_t qos_ca_options;
+//	osm_qos_options_t qos_sw0_options;
+//	osm_qos_options_t qos_swe_options;
+//	osm_qos_options_t qos_rtr_options;
+//	boolean_t congestion_control;
+//	ib_net64_t cc_key;
+//	uint32_t cc_max_outstanding_mads;
+//	ib_net32_t cc_sw_cong_setting_control_map;
+//	uint8_t cc_sw_cong_setting_victim_mask[IB_CC_PORT_MASK_DATA_SIZE];
+//	uint8_t cc_sw_cong_setting_credit_mask[IB_CC_PORT_MASK_DATA_SIZE];
+//	uint8_t cc_sw_cong_setting_threshold;
+//	uint8_t cc_sw_cong_setting_packet_size;
+//	uint8_t cc_sw_cong_setting_credit_starvation_threshold;
+//	osm_cct_entry_t cc_sw_cong_setting_credit_starvation_return_delay;
+//	ib_net16_t cc_sw_cong_setting_marking_rate;
+//	ib_net16_t cc_ca_cong_setting_port_control;
+//	ib_net16_t cc_ca_cong_setting_control_map;
+//	osm_cacongestion_entry_t cc_ca_cong_entries[IB_CA_CONG_ENTRY_DATA_SIZE];
+//	osm_cct_t cc_cct;
+//	boolean_t enable_quirks;
+//	boolean_t no_clients_rereg;
+//#ifdef ENABLE_OSM_PERF_MGR
+//	boolean_t perfmgr;
+//	boolean_t perfmgr_redir;
+//	uint16_t perfmgr_sweep_time_s;
+//	uint32_t perfmgr_max_outstanding_queries;
+//	boolean_t perfmgr_ignore_cas;
+//	char *event_db_dump_file;
+//	int perfmgr_rm_nodes;
+//	boolean_t perfmgr_log_errors;
+//	boolean_t perfmgr_query_cpi;
+//	boolean_t perfmgr_xmit_wait_log;
+//	uint32_t perfmgr_xmit_wait_threshold;
+//#endif				/* ENABLE_OSM_PERF_MGR */
+//	char *event_plugin_name;
+//	char *event_plugin_options;
+//	char *node_name_map_name;
+//	char *prefix_routes_file;
+//	char *log_prefix;
+//	boolean_t consolidate_ipv6_snm_req;
+//	struct osm_subn_opt *file_opts; /* used for update */
+//	uint8_t lash_start_vl;			/* starting vl to use in lash */
+//	uint8_t sm_sl;			/* which SL to use for SM/SA communication */
+//	uint8_t nue_max_num_vls;	/* maximum #VLs to use in nue */
+//	boolean_t nue_include_switches;	/* control how nue treats switches */
+//	char *per_module_logging_file;
+//	boolean_t quasi_ftree_indexing;
+//} osm_subn_opt_t;
+//
+
+
 /* from the subnets option struct */
 typedef struct sr_options
 {
