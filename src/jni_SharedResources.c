@@ -1352,7 +1352,7 @@ sr_getSubnetOptions()
   OSM_Options.m_key_lookup = (jboolean) p_opt->m_key_lookup;
   OSM_Options.allow_both_pkeys = (jboolean) p_opt->allow_both_pkeys;
   OSM_Options.port_shifting = (jboolean) p_opt->port_shifting;
-  OSM_Options.remote_guid_sorting = (jboolean) p_opt->remote_guid_sorting;
+//  OSM_Options.remote_guid_sorting = (jboolean) p_opt->remote_guid_sorting;
   OSM_Options.guid_routing_order_no_scatter = (jboolean) p_opt->guid_routing_order_no_scatter;
   OSM_Options.drop_event_subscriptions = (jboolean) p_opt->drop_event_subscriptions;
   OSM_Options.fsync_high_avail_files = (jboolean) p_opt->fsync_high_avail_files;
@@ -1402,7 +1402,7 @@ sr_getSubnetOptions()
   OSM_Options.max_reverse_hops = (jint) p_opt->max_reverse_hops;
   OSM_Options.perfmgr_sweep_time_s = (jint) p_opt->perfmgr_sweep_time_s;
   OSM_Options.perfmgr_max_outstanding_queries = (jint) p_opt->perfmgr_max_outstanding_queries;
-  OSM_Options.ca_port = (jint) p_opt->ca_port;
+//  OSM_Options.ca_port = (jint) p_opt->ca_port;
   OSM_Options.part_enforce_enum = (jint) p_opt->part_enforce_enum;
   OSM_Options.scatter_ports = (jint) p_opt->scatter_ports;
   OSM_Options.cc_max_outstanding_mads = (jint) p_opt->cc_max_outstanding_mads;
@@ -1448,8 +1448,8 @@ sr_getSubnetOptions()
   sstrncpy(OSM_Options.node_name_map_name, p_opt->node_name_map_name, sizeof(OSM_Options.node_name_map_name));
   sstrncpy(OSM_Options.prefix_routes_file, p_opt->prefix_routes_file, sizeof(OSM_Options.prefix_routes_file));
   sstrncpy(OSM_Options.log_prefix, p_opt->log_prefix, sizeof(OSM_Options.log_prefix));
-  sstrncpy(OSM_Options.ca_name, p_opt->ca_name, sizeof(OSM_Options.ca_name));
-  sstrncpy(OSM_Options.force_link_speed_file, p_opt->force_link_speed_file, sizeof(OSM_Options.force_link_speed_file));
+//  sstrncpy(OSM_Options.ca_name, p_opt->ca_name, sizeof(OSM_Options.ca_name));
+//  sstrncpy(OSM_Options.force_link_speed_file, p_opt->force_link_speed_file, sizeof(OSM_Options.force_link_speed_file));
   sstrncpy(OSM_Options.part_enforce, p_opt->part_enforce, sizeof(OSM_Options.part_enforce));
   sstrncpy(OSM_Options.port_search_ordering_file, p_opt->port_search_ordering_file,
       sizeof(OSM_Options.port_search_ordering_file));
