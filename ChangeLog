@@ -1,3 +1,7 @@
+- Tue Jan 15 2019 Tim Meier <meier3@llnl.gov>
+
+	* : release 53, removed LLNL customization - mostly OFED equivalent
+	
 - Wed Jun 27 2018 Tim Meier <meier3@llnl.gov>
 
 	* : release 51, support additional system properties for OMS
